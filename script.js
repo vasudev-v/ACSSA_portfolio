@@ -12,33 +12,40 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Form submission handling
+// Form submission handling with Formspree
 document.getElementById('contact-form').addEventListener('submit', function(e) {
     e.preventDefault();
     
-    // Get form data
-    const formData = new FormData(this);
-    const name = formData.get('name');
-    const email = formData.get('email');
-    const subject = formData.get('subject');
-    const message = formData.get('message');
+    const form = this;
+    const formData = new FormData(form);
     
-    // Basic validation
-    if (!name || !email || !subject || !message) {
-        showNotification('Please fill in all fields.', 'error');
-        return;
-    }
+    // Show loading state
+    const submitBtn = form.querySelector('.btn-form');
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'sending...';
+    submitBtn.disabled = true;
     
-    // Email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-        showNotification('Please enter a valid email address.', 'error');
-        return;
-    }
-    
-    // Success message
-    showNotification('Thank you for your message! We\'ll get back to you soon.', 'success');
-    this.reset();
+    // Submit to Formspree
+    fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+            'Accept': 'application/json'
+        }
+    }).then(response => {
+        if (response.ok) {
+            showNotification('Thank you for your message! We\'ll get back to you soon.', 'success');
+            form.reset();
+        } else {
+            throw new Error('Form submission failed');
+        }
+    }).catch(error => {
+        showNotification('Sorry, there was an error sending your message. Please try again.', 'error');
+    }).finally(() => {
+        // Reset button
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+    });
 });
 
 // Enhanced scroll effects for header
