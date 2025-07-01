@@ -11,7 +11,162 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
+// Event slider functionality
+let currentEventIndex = 0;
+const totalEvents = 3;
 
+function updateEventSlider() {
+    const slides = document.querySelector('.event-slides');
+    const indicators = document.querySelectorAll('.indicator');
+    const slider = document.querySelector('.event-slider');
+    const currentSlide = document.querySelectorAll('.event-slide')[currentEventIndex];
+    
+    if (slides) {
+        slides.style.transform = `translateX(-${currentEventIndex * 33.333}%)`;
+        
+        // Update indicators
+        indicators.forEach((indicator, index) => {
+            if (index === currentEventIndex) {
+                indicator.classList.add('active');
+            } else {
+                indicator.classList.remove('active');
+            }
+        });
+        
+        // Adjust container height to match current slide
+        if (currentSlide && slider) {
+            const slideHeight = currentSlide.scrollHeight;
+            const minHeight = 450;
+            const finalHeight = Math.max(slideHeight, minHeight);
+            slider.style.height = finalHeight + 'px';
+        }
+    }
+}
+
+function nextEvent() {
+    currentEventIndex = (currentEventIndex + 1) % totalEvents;
+    updateEventSlider();
+}
+
+function previousEvent() {
+    currentEventIndex = (currentEventIndex - 1 + totalEvents) % totalEvents;
+    updateEventSlider();
+}
+
+function goToEvent(index) {
+    currentEventIndex = index;
+    updateEventSlider();
+}
+
+// Touch/swipe functionality
+let startX = 0;
+let startY = 0;
+let distX = 0;
+let distY = 0;
+let threshold = 100; // minimum distance for swipe
+let restraint = 100; // maximum distance perpendicular to swipe direction
+let allowedTime = 500; // maximum time allowed to travel that distance
+let elapsedTime = 0;
+let startTime = 0;
+
+function handleTouchStart(e) {
+    const touchobj = e.changedTouches[0];
+    startX = touchobj.pageX;
+    startY = touchobj.pageY;
+    startTime = new Date().getTime();
+}
+
+function handleTouchEnd(e) {
+    const touchobj = e.changedTouches[0];
+    distX = touchobj.pageX - startX;
+    distY = touchobj.pageY - startY;
+    elapsedTime = new Date().getTime() - startTime;
+    
+    if (elapsedTime <= allowedTime) {
+        if (Math.abs(distX) >= threshold && Math.abs(distY) <= restraint) {
+            if (distX > 0) {
+                // Swipe right - go to previous event
+                previousEvent();
+            } else {
+                // Swipe left - go to next event
+                nextEvent();
+            }
+        }
+    }
+}
+
+// Initialize event slider
+document.addEventListener('DOMContentLoaded', function() {
+    const eventSlider = document.querySelector('.event-slider');
+    
+    if (eventSlider) {
+        // Add touch event listeners
+        eventSlider.addEventListener('touchstart', handleTouchStart, { passive: true });
+        eventSlider.addEventListener('touchend', handleTouchEnd, { passive: true });
+        
+        // Add keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (document.querySelector('.event-slider:hover') || document.activeElement.closest('.event-slider')) {
+                if (e.key === 'ArrowLeft') {
+                    previousEvent();
+                } else if (e.key === 'ArrowRight') {
+                    nextEvent();
+                }
+            }
+        });
+        
+        // Auto-play functionality (optional)
+        let autoPlayInterval;
+        
+        function startAutoPlay() {
+            autoPlayInterval = setInterval(() => {
+                nextEvent();
+            }, 5000); // Change slide every 5 seconds
+        }
+        
+        function stopAutoPlay() {
+            clearInterval(autoPlayInterval);
+        }
+        
+        // Start auto-play
+        startAutoPlay();
+        
+        // Pause auto-play on hover
+        eventSlider.addEventListener('mouseenter', stopAutoPlay);
+        eventSlider.addEventListener('mouseleave', startAutoPlay);
+        
+        // Pause auto-play on touch
+        eventSlider.addEventListener('touchstart', stopAutoPlay);
+        eventSlider.addEventListener('touchend', () => {
+            setTimeout(startAutoPlay, 3000); // Resume after 3 seconds
+        });
+        
+        // Recalculate heights on window resize
+        window.addEventListener('resize', function() {
+            updateEventSlider();
+        });
+    }
+    
+    // Initialize slider position and height
+    updateEventSlider();
+});
+
+// Function to manually recalculate all slide heights (useful if content is dynamically updated)
+function recalculateSlideHeights() {
+    const slides = document.querySelectorAll('.event-slide');
+    const slider = document.querySelector('.event-slider');
+    
+    if (slides.length > 0 && slider) {
+        let maxHeight = 450; // minimum height
+        
+        slides.forEach(slide => {
+            const slideHeight = slide.scrollHeight;
+            maxHeight = Math.max(maxHeight, slideHeight);
+        });
+        
+        slider.style.height = maxHeight + 'px';
+    }
+}
 // Form submission handling with Formspree
 document.getElementById('contact-form').addEventListener('submit', function(e) {
     e.preventDefault();

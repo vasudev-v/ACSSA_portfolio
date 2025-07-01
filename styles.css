@@ -321,7 +321,7 @@ section {
 .section-header h2 {
     font-size: 3rem;
     font-weight: 800;
-    text-transform: lowercase;
+    /* text-transform: lowercase; */
     color: #1a1a1a;
     margin-bottom: 1rem;
 }
@@ -391,7 +391,7 @@ section {
     font-size: 1.5rem;
     font-weight: 700;
     margin-bottom: 1rem;
-    text-transform: lowercase;
+    /* text-transform: lowercase; */
     position: relative;
     z-index: 1;
 }
@@ -452,7 +452,7 @@ section {
     font-size: 1.3rem;
     font-weight: 700;
     margin-bottom: 1rem;
-    text-transform: lowercase;
+    /* text-transform: lowercase; */
     position: relative;
     z-index: 1;
 }
@@ -548,7 +548,7 @@ section {
     font-size: 1.4rem;
     font-weight: 700;
     margin-bottom: 0.5rem;
-    text-transform: lowercase;
+    /* text-transform: lowercase; */
     position: relative;
     z-index: 1;
 }
@@ -557,7 +557,7 @@ section {
     color: #ff6b6b;
     font-weight: 600;
     font-size: 1rem;
-    text-transform: lowercase;
+    /* text-transform: lowercase; */
     margin-bottom: 1rem;
     position: relative;
     z-index: 1;
@@ -582,37 +582,44 @@ section {
     opacity: 0.2;
 }
 
-/* Events Section */
 .events {
     background: #f8f9fa;
 }
 
-.events-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    gap: 2rem;
-}
-
-.event-card {
+/* Event Slider */
+.event-slider {
     position: relative;
-    padding: 3rem;
-    background: white;
+    max-width: 800px;
+    margin: 0 auto;
+    overflow: hidden;
     border-radius: 30px;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
+    min-height: 450px;
+    height: auto;
+}
+
+.event-slides {
+    display: flex;
+    transition: transform 0.3s ease;
+    width: 300%;
+    align-items: stretch;
+}
+
+.event-slide {
+    width: 33.333%;
+    flex-shrink: 0;
+    background: white;
+    padding: 4rem;
+    position: relative;
     overflow: hidden;
+    min-height: 450px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
-.event-large {
-    grid-row: span 2;
-}
-
-.event-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15);
-}
-
-.event-bg {
+.event-slide .event-bg {
     position: absolute;
     top: 0;
     left: 0;
@@ -622,84 +629,155 @@ section {
     z-index: 0;
 }
 
-.event-bg-1 { background: linear-gradient(135deg, #ff6b6b, #ff8a80); }
-.event-bg-2 { background: linear-gradient(135deg, #4ecdc4, #45b7d1); }
-.event-bg-3 { background: linear-gradient(135deg, #96ceb4, #8bc34a); }
+.event-slide .event-bg.bg-1 {
+    background: linear-gradient(135deg, #ff6b6b, #ff8a80);
+}
 
-.event-date {
+.event-slide .event-bg.bg-2 {
+    background: linear-gradient(135deg, #4ecdc4, #45b7d1);
+}
+
+.event-slide .event-bg.bg-3 {
+    background: linear-gradient(135deg, #96ceb4, #8bc34a);
+}
+
+.event-slide .event-date {
     display: inline-block;
-    background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
     color: white;
+    width: 15%;
     padding: 0.8rem 1.5rem;
     border-radius: 20px;
     font-weight: 700;
     font-size: 0.9rem;
-    text-transform: lowercase;
+    /* text-transform: lowercase; */
     margin-bottom: 1.5rem;
+    text-align: center;
     position: relative;
     z-index: 1;
 }
 
-.event-card h3 {
-    font-size: 1.8rem;
+.event-slide .event-date.date-1 {
+    background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+}
+
+.event-slide .event-date.date-2 {
+    background: linear-gradient(135deg, #4ecdc4, #45b7d1);
+}
+
+.event-slide .event-date.date-3 {
+    background: linear-gradient(135deg, #96ceb4, #8bc34a);
+}
+
+.event-slide h3 {
+    font-size: 2.2rem;
     font-weight: 800;
-    margin-bottom: 1rem;
-    text-transform: lowercase;
+    margin-bottom: 1.5rem;
+    /* text-transform: lowercase; */
     position: relative;
     z-index: 1;
 }
 
-.event-card p {
+.event-slide p {
     color: #666;
-    line-height: 1.6;
-    margin-bottom: 2rem;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
     position: relative;
     z-index: 1;
+    font-size: 1.1rem;
+    flex-grow: 1;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
 }
 
-.event-details {
+.event-slide .event-details {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
-    margin-bottom: 2rem;
+    gap: 0.8rem;
+    margin-bottom: 2.5rem;
     position: relative;
     z-index: 1;
 }
 
-.event-details span {
-    font-size: 0.9rem;
+.event-slide .event-details span {
+    font-size: 1rem;
     color: #888;
     font-weight: 500;
 }
 
-.event-btn {
-    display: inline-block;
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    color: white;
-    padding: 12px 25px;
-    border-radius: 25px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.9rem;
-    text-transform: lowercase;
-    transition: all 0.3s ease;
-    position: relative;
-    z-index: 1;
-}
-
-.event-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
-}
-
-.event-decoration {
+.event-slide .event-decoration {
     position: absolute;
-    bottom: 20px;
-    right: 20px;
-    font-size: 3rem;
+    bottom: 30px;
+    right: 30px;
+    font-size: 4rem;
     opacity: 0.3;
     z-index: 1;
 }
+
+/* Navigation Arrows */
+.nav-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    z-index: 10;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.nav-left {
+    left: 25px;
+}
+
+.nav-right {
+    right: 25px;
+}
+
+.nav-arrow:hover {
+    background: white;
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* Event Indicators */
+/* .event-indicators {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+.indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 0.7;
+}
+
+.indicator.active {
+    background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+.indicator:hover {
+    opacity: 1;
+    transform: scale(1.1);
+} */
 
 /* Opportunities Section */
 .opportunities {
@@ -750,7 +828,7 @@ section {
 .opportunity-card h3 {
     font-size: 2rem;
     font-weight: 800;
-    text-transform: lowercase;
+    /* text-transform: lowercase; */
     margin-bottom: 1.5rem;
     color: #1a1a1a;
     position: relative;
@@ -777,7 +855,7 @@ section {
     border-radius: 20px;
     font-weight: 600;
     font-size: 0.85rem;
-    text-transform: lowercase;
+    /* text-transform: lowercase; */
 }
 
 .opportunity-decoration {
@@ -825,7 +903,7 @@ section {
     font-size: 1.5rem;
     font-weight: 700;
     margin-bottom: 2rem;
-    text-transform: lowercase;
+    /* text-transform: lowercase; */
     position: relative;
     z-index: 1;
 }
@@ -859,7 +937,7 @@ section {
 .contact-item strong {
     font-weight: 600;
     color: #1a1a1a;
-    text-transform: lowercase;
+    /* text-transform: lowercase; */
 }
 
 .contact-form {
@@ -887,7 +965,7 @@ section {
     font-size: 1.5rem;
     font-weight: 700;
     margin-bottom: 2rem;
-    text-transform: lowercase;
+    /* text-transform: lowercase; */
     position: relative;
     z-index: 1;
 }
@@ -909,7 +987,7 @@ label {
     margin-bottom: 0.8rem;
     font-weight: 600;
     color: #1a1a1a;
-    text-transform: lowercase;
+    /* text-transform: lowercase; */
     font-size: 0.9rem;
 }
 
@@ -946,7 +1024,7 @@ textarea {
     border-radius: 15px;
     font-weight: 600;
     font-size: 1rem;
-    text-transform: lowercase;
+    /* text-transform: lowercase; */
     transition: all 0.3s ease;
     position: relative;
     z-index: 1;
@@ -995,7 +1073,7 @@ footer {
     font-size: 1.8rem;
     font-weight: 800;
     color: white;
-    text-transform: lowercase;
+    /* text-transform: lowercase; */
 }
 
 .footer-content p {
