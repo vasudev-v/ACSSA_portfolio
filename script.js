@@ -115,31 +115,31 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
-        // Auto-play functionality (optional)
-        let autoPlayInterval;
+        // // Auto-play functionality (optional)
+        // let autoPlayInterval;
         
-        function startAutoPlay() {
-            autoPlayInterval = setInterval(() => {
-                nextEvent();
-            }, 5000); // Change slide every 5 seconds
-        }
+        // function startAutoPlay() {
+        //     autoPlayInterval = setInterval(() => {
+        //         nextEvent();
+        //     }, 5000); // Change slide every 5 seconds
+        // }
         
-        function stopAutoPlay() {
-            clearInterval(autoPlayInterval);
-        }
+        // function stopAutoPlay() {
+        //     clearInterval(autoPlayInterval);
+        // }
         
-        // Start auto-play
-        startAutoPlay();
+        // // Start auto-play
+        // startAutoPlay();
         
-        // Pause auto-play on hover
-        eventSlider.addEventListener('mouseenter', stopAutoPlay);
-        eventSlider.addEventListener('mouseleave', startAutoPlay);
+        // // Pause auto-play on hover
+        // eventSlider.addEventListener('mouseenter', stopAutoPlay);
+        // eventSlider.addEventListener('mouseleave', startAutoPlay);
         
-        // Pause auto-play on touch
-        eventSlider.addEventListener('touchstart', stopAutoPlay);
-        eventSlider.addEventListener('touchend', () => {
-            setTimeout(startAutoPlay, 3000); // Resume after 3 seconds
-        });
+        // // Pause auto-play on touch
+        // eventSlider.addEventListener('touchstart', stopAutoPlay);
+        // eventSlider.addEventListener('touchend', () => {
+        //     setTimeout(startAutoPlay, 3000); // Resume after 3 seconds
+        // });
         
         // Recalculate heights on window resize
         window.addEventListener('resize', function() {
