@@ -651,7 +651,7 @@ section {
     font-size: 0.9rem;
     /* text-transform: lowercase; */
     margin-bottom: 1.5rem;
-    text-align: center;
+    text-align: relative;
     position: relative;
     z-index: 1;
 }
