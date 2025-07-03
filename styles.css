@@ -16,9 +16,10 @@ body {
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 1600px;
     margin: 0 auto;
-    padding: 0 20px;
+    /* padding-left: 100px; */
+    /* gap: 50px; */
 }
 
 /* Binary pattern background */
@@ -51,40 +52,33 @@ header {
 }
 
 nav {
-    display: flex;
+    display: flex end;
     justify-content: space-between;
     align-items: center;
     padding: 1rem 0;
+    width: 100%;
 }
 
 .logo {
-    position: relative;
     display: flex;
     align-items: center;
+    justify-self: flex-start;
+    /* margin-left: 0; */
+    gap: 200%;
 }
 
-.logo-bg {
-    position: absolute;
-    width: 120px;
-    height: 40px;
-    background: linear-gradient(135deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
-    border-radius: 20px;
-    z-index: -1;
-}
-
-.logo-text {
-    font-size: 1.8rem;
-    font-weight: 800;
-    color: white;
-    padding: 0 15px;
-    /* text-transform: uppercase; */
-    letter-spacing: -0.5px;
+.logo-img {
+    height: 30px;
+    width: auto;
+    margin-left: -4px;
 }
 
 .nav-links {
     display: flex;
     list-style: none;
     gap: 2.5rem;
+    margin-left: auto;
+    margin-right: 0;
 }
 
 .nav-links a {
@@ -92,7 +86,7 @@ nav {
     color: #1a1a1a;
     font-weight: 500;
     font-size: 0.95rem;
-    /* text-transform: uppercase; */
+    text-transform: lowercase;
     transition: color 0.3s;
     position: relative;
 }
@@ -189,7 +183,7 @@ nav {
     font-weight: 800;
     line-height: 1.1;
     margin-bottom: 1.5rem;
-    /* text-transform: uppercase; */
+    text-transform: lowercase;
 }
 
 .highlight {
@@ -203,7 +197,7 @@ nav {
     font-size: 1.2rem;
     margin-bottom: 2.5rem;
     opacity: 0.9;
-    /* text-transform: uppercase; */
+    text-transform: lowercase;
 }
 
 .hero-buttons {
@@ -218,7 +212,7 @@ nav {
     text-decoration: none;
     font-weight: 600;
     font-size: 0.95rem;
-    /* text-transform: lowercase; */
+    text-transform: lowercase;
     transition: all 0.3s ease;
     border: none;
     cursor: pointer;
@@ -321,7 +315,7 @@ section {
 .section-header h2 {
     font-size: 3rem;
     font-weight: 800;
-    /* text-transform: lowercase; */
+    text-transform: lowercase;
     color: #1a1a1a;
     margin-bottom: 1rem;
 }
@@ -391,7 +385,7 @@ section {
     font-size: 1.5rem;
     font-weight: 700;
     margin-bottom: 1rem;
-    /* text-transform: lowercase; */
+    text-transform: lowercase;
     position: relative;
     z-index: 1;
 }
@@ -452,7 +446,7 @@ section {
     font-size: 1.3rem;
     font-weight: 700;
     margin-bottom: 1rem;
-    /* text-transform: lowercase; */
+    text-transform: lowercase;
     position: relative;
     z-index: 1;
 }
@@ -542,13 +536,28 @@ section {
     background: linear-gradient(135deg, #667eea, #764ba2);
     position: relative;
     z-index: 1;
+    overflow: hidden;
+    border: 4px solid white;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.team-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.team-card:hover .team-photo {
+    transform: scale(1.1);
 }
 
 .team-card h3 {
     font-size: 1.4rem;
     font-weight: 700;
     margin-bottom: 0.5rem;
-    /* text-transform: lowercase; */
+    text-transform: lowercase;
     position: relative;
     z-index: 1;
 }
@@ -557,7 +566,7 @@ section {
     color: #ff6b6b;
     font-weight: 600;
     font-size: 1rem;
-    /* text-transform: lowercase; */
+    text-transform: lowercase;
     margin-bottom: 1rem;
     position: relative;
     z-index: 1;
@@ -582,6 +591,7 @@ section {
     opacity: 0.2;
 }
 
+/* Events Section */
 .events {
     background: #f8f9fa;
 }
@@ -644,14 +654,12 @@ section {
 .event-slide .event-date {
     display: inline-block;
     color: white;
-    width: 15%;
     padding: 0.8rem 1.5rem;
     border-radius: 20px;
     font-weight: 700;
     font-size: 0.9rem;
-    /* text-transform: lowercase; */
+    text-transform: lowercase;
     margin-bottom: 1.5rem;
-    text-align: relative;
     position: relative;
     z-index: 1;
 }
@@ -672,7 +680,7 @@ section {
     font-size: 2.2rem;
     font-weight: 800;
     margin-bottom: 1.5rem;
-    /* text-transform: lowercase; */
+    text-transform: lowercase;
     position: relative;
     z-index: 1;
 }
@@ -748,19 +756,19 @@ section {
 }
 
 /* Event Indicators */
-/* .event-indicators {
+.event-indicators {
     position: absolute;
-    bottom: 20px;
+    bottom: 30px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-    gap: 10px;
+    gap: 15px;
     z-index: 10;
 }
 
 .indicator {
-    width: 12px;
-    height: 12px;
+    width: 15px;
+    height: 15px;
     border-radius: 50%;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -777,7 +785,7 @@ section {
 .indicator:hover {
     opacity: 1;
     transform: scale(1.1);
-} */
+}
 
 /* Opportunities Section */
 .opportunities {
@@ -828,7 +836,7 @@ section {
 .opportunity-card h3 {
     font-size: 2rem;
     font-weight: 800;
-    /* text-transform: lowercase; */
+    text-transform: lowercase;
     margin-bottom: 1.5rem;
     color: #1a1a1a;
     position: relative;
@@ -855,7 +863,7 @@ section {
     border-radius: 20px;
     font-weight: 600;
     font-size: 0.85rem;
-    /* text-transform: lowercase; */
+    text-transform: lowercase;
 }
 
 .opportunity-decoration {
@@ -903,7 +911,7 @@ section {
     font-size: 1.5rem;
     font-weight: 700;
     margin-bottom: 2rem;
-    /* text-transform: lowercase; */
+    text-transform: lowercase;
     position: relative;
     z-index: 1;
 }
@@ -937,7 +945,7 @@ section {
 .contact-item strong {
     font-weight: 600;
     color: #1a1a1a;
-    /* text-transform: lowercase; */
+    text-transform: lowercase;
 }
 
 .contact-form {
@@ -965,7 +973,7 @@ section {
     font-size: 1.5rem;
     font-weight: 700;
     margin-bottom: 2rem;
-    /* text-transform: lowercase; */
+    text-transform: lowercase;
     position: relative;
     z-index: 1;
 }
@@ -987,7 +995,7 @@ label {
     margin-bottom: 0.8rem;
     font-weight: 600;
     color: #1a1a1a;
-    /* text-transform: lowercase; */
+    text-transform: lowercase;
     font-size: 0.9rem;
 }
 
@@ -1024,7 +1032,7 @@ textarea {
     border-radius: 15px;
     font-weight: 600;
     font-size: 1rem;
-    /* text-transform: lowercase; */
+    text-transform: lowercase;
     transition: all 0.3s ease;
     position: relative;
     z-index: 1;
@@ -1064,16 +1072,17 @@ footer {
 
 .footer-logo {
     display: inline-block;
+    background: linear-gradient(135deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
     padding: 15px 30px;
     border-radius: 25px;
     margin-bottom: 1.5rem;
-} 
+}
 
 .footer-logo .logo-text {
     font-size: 1.8rem;
     font-weight: 800;
     color: white;
-    /* text-transform: lowercase; */
+    text-transform: lowercase;
 }
 
 .footer-content p {
