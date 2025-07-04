@@ -64,7 +64,7 @@ nav {
     align-items: center;
     justify-self: flex-start;
     /* margin-left: 0; */
-    gap: 200%;
+    gap: 60%;
 }
 
 .logo-img {
@@ -86,7 +86,6 @@ nav {
     color: #1a1a1a;
     font-weight: 500;
     font-size: 0.95rem;
-    text-transform: lowercase;
     transition: color 0.3s;
     position: relative;
 }
@@ -183,7 +182,6 @@ nav {
     font-weight: 800;
     line-height: 1.1;
     margin-bottom: 1.5rem;
-    text-transform: lowercase;
 }
 
 .highlight {
@@ -197,7 +195,6 @@ nav {
     font-size: 1.2rem;
     margin-bottom: 2.5rem;
     opacity: 0.9;
-    text-transform: lowercase;
 }
 
 .hero-buttons {
@@ -212,7 +209,6 @@ nav {
     text-decoration: none;
     font-weight: 600;
     font-size: 0.95rem;
-    text-transform: lowercase;
     transition: all 0.3s ease;
     border: none;
     cursor: pointer;
@@ -315,7 +311,6 @@ section {
 .section-header h2 {
     font-size: 3rem;
     font-weight: 800;
-    text-transform: lowercase;
     color: #1a1a1a;
     margin-bottom: 1rem;
 }
@@ -385,7 +380,6 @@ section {
     font-size: 1.5rem;
     font-weight: 700;
     margin-bottom: 1rem;
-    text-transform: lowercase;
     position: relative;
     z-index: 1;
 }
@@ -446,7 +440,6 @@ section {
     font-size: 1.3rem;
     font-weight: 700;
     margin-bottom: 1rem;
-    text-transform: lowercase;
     position: relative;
     z-index: 1;
 }
@@ -557,7 +550,6 @@ section {
     font-size: 1.4rem;
     font-weight: 700;
     margin-bottom: 0.5rem;
-    text-transform: lowercase;
     position: relative;
     z-index: 1;
 }
@@ -566,7 +558,6 @@ section {
     color: #ff6b6b;
     font-weight: 600;
     font-size: 1rem;
-    text-transform: lowercase;
     margin-bottom: 1rem;
     position: relative;
     z-index: 1;
@@ -680,7 +671,6 @@ section {
     font-size: 2.2rem;
     font-weight: 800;
     margin-bottom: 1.5rem;
-    text-transform: lowercase;
     position: relative;
     z-index: 1;
 }
@@ -756,7 +746,7 @@ section {
 }
 
 /* Event Indicators */
-.event-indicators {
+/* .event-indicators {
     position: absolute;
     bottom: 30px;
     left: 50%;
@@ -785,7 +775,7 @@ section {
 .indicator:hover {
     opacity: 1;
     transform: scale(1.1);
-}
+} */
 
 /* Opportunities Section */
 .opportunities {
@@ -836,7 +826,6 @@ section {
 .opportunity-card h3 {
     font-size: 2rem;
     font-weight: 800;
-    text-transform: lowercase;
     margin-bottom: 1.5rem;
     color: #1a1a1a;
     position: relative;
@@ -863,7 +852,6 @@ section {
     border-radius: 20px;
     font-weight: 600;
     font-size: 0.85rem;
-    text-transform: lowercase;
 }
 
 .opportunity-decoration {
@@ -911,7 +899,6 @@ section {
     font-size: 1.5rem;
     font-weight: 700;
     margin-bottom: 2rem;
-    text-transform: lowercase;
     position: relative;
     z-index: 1;
 }
@@ -945,7 +932,6 @@ section {
 .contact-item strong {
     font-weight: 600;
     color: #1a1a1a;
-    text-transform: lowercase;
 }
 
 .contact-form {
@@ -973,7 +959,6 @@ section {
     font-size: 1.5rem;
     font-weight: 700;
     margin-bottom: 2rem;
-    text-transform: lowercase;
     position: relative;
     z-index: 1;
 }
@@ -995,7 +980,6 @@ label {
     margin-bottom: 0.8rem;
     font-weight: 600;
     color: #1a1a1a;
-    text-transform: lowercase;
     font-size: 0.9rem;
 }
 
@@ -1032,7 +1016,6 @@ textarea {
     border-radius: 15px;
     font-weight: 600;
     font-size: 1rem;
-    text-transform: lowercase;
     transition: all 0.3s ease;
     position: relative;
     z-index: 1;
@@ -1072,7 +1055,7 @@ footer {
 
 .footer-logo {
     display: inline-block;
-    background: linear-gradient(135deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
+    /* background: linear-gradient(135deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4); */
     padding: 15px 30px;
     border-radius: 25px;
     margin-bottom: 1.5rem;
@@ -1082,7 +1065,6 @@ footer {
     font-size: 1.8rem;
     font-weight: 800;
     color: white;
-    text-transform: lowercase;
 }
 
 .footer-content p {
@@ -1090,14 +1072,12 @@ footer {
     margin: 0 auto;
     opacity: 0.8;
     line-height: 1.7;
-    text-transform: lowercase;
 }
 
 footer > .container > p {
     text-align: center;
     opacity: 0.6;
     font-size: 0.9rem;
-    text-transform: lowercase;
     position: relative;
     z-index: 1;
 }
